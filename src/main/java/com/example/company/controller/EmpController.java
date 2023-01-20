@@ -28,6 +28,18 @@ public class EmpController {
         return empService.getAllEmployees();
     }
 
+    @GetMapping("/empDtails/{empName}")
+    public ResponseEntity<EmployeeBasicDetails> getEmpBasicDetails(@PathVariable String empName){
+        log.info("Entering into EmpController.getEmpBasicDetails(@PathVariable String empName).");
+        return empService.getEmpByEmpName(empName);
+    }
+
+    @GetMapping("/employmentDetails/{empName}")
+    public ResponseEntity<EmployeeBasicDetails> getEmpEmploymentDetails(@PathVariable String empName){
+        log.info("Entering into EmpController.getEmpEmploymentDetails(@PathVariable String empName).");
+        return empService.getEmploymentDetailsByEmpName(empName);
+    }
+
     @PostMapping("/saveEmp")
     public ResponseEntity<String> saveEmployee(@RequestBody Employees employees){
         log.info("Entering into EmpController.saveEmployee(@RequestBody Employees employees).");
@@ -49,15 +61,4 @@ public class EmpController {
         return empService.deleteEmployeeByName(empName);
     }
 
-    @GetMapping("/empDtails/{empName}")
-    public ResponseEntity<EmployeeBasicDetails> getEmpBasicDetails(@PathVariable String empName){
-        log.info("Entering into EmpController.getEmpBasicDetails(@PathVariable String empName).");
-        return empService.getEmpByEmpName(empName);
-    }
-
-    @GetMapping("/employmentDetails/{empName}")
-    public ResponseEntity<EmployeeBasicDetails> getEmpEmploymentDetails(@PathVariable String empName){
-        log.info("Entering into EmpController.getEmpEmploymentDetails(@PathVariable String empName).");
-        return empService.getEmploymentDetailsByEmpName(empName);
-    }
 }
