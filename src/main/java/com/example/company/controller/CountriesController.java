@@ -49,7 +49,7 @@ public class CountriesController {
 
     @PostMapping("/addCountry")
     public Countries addCountry(@RequestBody Countries countries){
-        log.info("Entering into CountriesController.addCountry(@RequestBody Countries countries) with added country name - {}",countries.getCountryName());
+        log.info("Entering into CountriesController.addCountry(@RequestBody Countries countries), country name - {} Added.",countries.getCountryName());
         return countryRepo.save(countries);
     }
 }
