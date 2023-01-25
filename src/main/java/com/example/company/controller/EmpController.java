@@ -34,7 +34,9 @@ public class EmpController {
         return empService.getEmpByEmpName(empName);
     }
 
-    @GetMapping("/employmentDetails/{empName}")
+    /*produces is used to restrict the type of response(xml,json). To toggle between responses need to use Accept in headers.
+    * Default it is type of JSON*/
+    @GetMapping(value = "/employmentDetails/{empName}", produces = {"application/xml", "application/json"})
     public ResponseEntity<EmployeeBasicDetails> getEmpEmploymentDetails(@PathVariable String empName){
         log.info("Entering into EmpController.getEmpEmploymentDetails(@PathVariable String empName).");
         return empService.getEmploymentDetailsByEmpName(empName);

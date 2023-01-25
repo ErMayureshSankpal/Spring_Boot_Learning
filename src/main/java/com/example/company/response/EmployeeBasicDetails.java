@@ -3,7 +3,11 @@ package com.example.company.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 @JsonComponent
+@XmlRootElement
 public class EmployeeBasicDetails {
 
     @JsonProperty("Employee Id")
@@ -36,6 +40,7 @@ public class EmployeeBasicDetails {
         return empId;
     }
 
+    @XmlElement(name = "EmployeeId")
     public void setEmpId(Long empId) {
         this.empId = empId;
     }
@@ -44,6 +49,7 @@ public class EmployeeBasicDetails {
         return fName;
     }
 
+    @XmlElement(name = "EmployeeFirstName")
     public void setfName(String fName) {
         this.fName = fName;
     }
@@ -52,6 +58,7 @@ public class EmployeeBasicDetails {
         return lName;
     }
 
+    @XmlElement(name = "EmployeeLastName")
     public void setlName(String lName) {
         this.lName = lName;
     }
@@ -60,8 +67,18 @@ public class EmployeeBasicDetails {
         return phNum;
     }
 
+    @XmlElement(name = "PhoneNumber")
     public void setPhNum(String phNum) {
         this.phNum = phNum;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    @XmlElement(name = "EmailId")
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

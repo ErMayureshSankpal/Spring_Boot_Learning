@@ -3,9 +3,11 @@ package com.example.company.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 @JsonComponent
+@XmlRootElement
 public class EmploymentDetails extends EmployeeBasicDetails{
 
     @JsonProperty("Salary per month")
