@@ -5,10 +5,7 @@ import com.example.company.service.DeptService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,5 +29,12 @@ public class DeptController {
         log.info("Entering into DeptController.getDepartmentByDeptId(@PathVariable(\"dId\") Long deptId). Requested Dept Id - {}", deptId);
         return deptService.getDepartmentByDeptId(deptId);
     }
+
+    @GetMapping("/exp")
+    public String doExp(@RequestParam String[] id){
+        System.out.println(id.length);
+        return "None";
+    }
+
 
 }
