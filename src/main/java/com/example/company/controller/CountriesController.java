@@ -1,5 +1,6 @@
 package com.example.company.controller;
 
+import com.example.company.kafkaservice.KafkaProducer;
 import com.example.company.model.Countries;
 import com.example.company.repo.CountryRepo;
 import org.apache.logging.log4j.*;
@@ -22,6 +23,9 @@ public class CountriesController {
 
     @Autowired
     CountryRepo countryRepo;
+
+    @Autowired
+    KafkaProducer kafkaProducer;
 
     @GetMapping("/app")
     public String getAppName(){
@@ -50,6 +54,7 @@ public class CountriesController {
     @PostMapping("/addCountry")
     public Countries addCountry(@RequestBody Countries countries){
         log.info("Entering into CountriesController.addCountry(@RequestBody Countries countries), country name - {} Added.",countries.getCountryName());
+        kafkaProducer.sendMsg(countries);
         return countryRepo.save(countries);
     }
 }
