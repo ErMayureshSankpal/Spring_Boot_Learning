@@ -41,7 +41,7 @@ public class CountriesController {
         return countryRepo.findByCountryName(contName);
     }
 
-    @GetMapping("/byRegCode")
+    @GetMapping("/byRegCodeAndName")
     public Countries getByRegionCodeAndName(@RequestParam long code, @RequestParam String name){
         log.info("Entering into CountriesController.getByRegionCodeAndName(@RequestParam long code, @RequestParam String name)");
         return countryRepo.findByRegionIdAndCountryName(code, name);
